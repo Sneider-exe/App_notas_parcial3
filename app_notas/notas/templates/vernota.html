@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %} 
+<title>Ver nota</title>
+<link rel="stylesheet" href="{% static '/css/detalle.css' %}" >
+{% endblock extrahead%}
+
+{% block content %} 
+<h1 class="display-4" id="title">Información de la nota</h1>
+<a type="button" class="btn btn-success" href="{% url 'index' %}">Volver</a>
+
+<div class="row">
+    <div class="col col-sm">
+        <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">ID</th>
+                <td>{{ nota.id }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Titulo</th>
+                <td>{{ nota.titulo }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Nota</th>
+                <td>{{ nota.nota }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Fecha</th>
+                <td>{{ nota.fecha_creacion }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Usuario</th>
+                <td>{{ nota.usuario }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+{% endblock content%}

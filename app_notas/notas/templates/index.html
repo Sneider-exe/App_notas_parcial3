@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block extrahead %}
+<title>APP DE NOTAS</title>
+{% endblock extrahead%}
+
+{% block content %}
+<a class="boton" href="{%url 'nuevanota'%}"><button class="btn btn-primary">Nueva nota</button></a>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Nota</th>
+        <th scope="col">Fecha Creación</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for Nota in notas %}
+      <tr>
+        <th scope="row">{{ Nota.id }}</th>
+        <td>{{ Nota.titulo|upper }}</td>
+        <td>{{ Nota.nota }}</td>
+        <td>{{ Nota.fecha_creacion }}</td>
+        <td>
+          <a type="button-sm" class="btn btn-sm btn-primary" href="{% url 'vernota' Nota.id %}">Ver</a>
+          <a type="button-sm" class="btn btn-sm btn-primary" href="{% url 'editarnota' Nota.id %}">Editar</a>
+          <a type="button-sm" class="btn btn-sm btn-danger" href="{% url 'eliminarnota' Nota.id %}">Borrar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
